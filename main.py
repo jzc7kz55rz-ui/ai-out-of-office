@@ -4,6 +4,12 @@ ENTRY = "I am on vacation. Your email has been queued for my return, right behin
 MAX_CHARS = 160
 
 
+def entry_text():
+    text = ENTRY.strip()
+    assert 1 <= len(text) <= MAX_CHARS
+    return text
+
+
 def main():
     try:
         os.makedirs("/output", exist_ok=True)
@@ -11,7 +17,7 @@ def main():
     except OSError:
         out_path = "entry.txt"
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(ENTRY)
+        f.write(entry_text())
 
 
 if __name__ == "__main__":
